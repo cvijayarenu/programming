@@ -1,4 +1,4 @@
-#in effecient solution.
+# in efficient solution. recursive model
 def recMC(coinValueList, change, knownResults):
     minCoins = change
     if change in coinValueList:
@@ -17,7 +17,7 @@ def recMC(coinValueList, change, knownResults):
 
 print recMC([1, 20, 100], 19, [0]*20)
 
-
+# iterative model
 def dpMakeChange(coinValueList,change,minCoins):
    for cents in range(change+1):
       coinCount = cents
