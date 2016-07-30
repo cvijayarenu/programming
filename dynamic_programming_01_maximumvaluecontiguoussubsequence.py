@@ -6,9 +6,7 @@ class MaxValContiguous():
 
     def findMaxVal(self):
         self.length = len(self.input)
-        self.output = []
-        self.output.insert(0, self.input[0])
-        final_max = self.input[0]
+        final_max = self.output = [self.input[0]]
         for index in xrange(1, self.length):
             max_till_now = max(
                 self.output[index - 1] + self.input[index],
@@ -19,6 +17,6 @@ class MaxValContiguous():
         print self.output
         print final_max
 
-input = [2, -3, 4, 23]
+input = [1, -3, 2, 2]
 x = MaxValContiguous(input=input)
 x.findMaxVal()
