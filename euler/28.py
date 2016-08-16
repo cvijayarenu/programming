@@ -14,6 +14,6 @@ def spiral_total(square_size):
                 other_diognal = other_diognal +  2 * i
             total += other_diognal
 
-    return total -1
+    return total -1 # because 1 is added twice for both diagonals
 
 print spiral_total(1001)
