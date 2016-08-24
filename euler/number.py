@@ -39,9 +39,54 @@ def no_of_divisors(num):
 def sum_divisors(num):
     return sum(divisors(num))
 
+def is_prime(n):
+    if n < 2 :
+        return False
+    if n % 2 == 0 and n > 2:
+        return False
+    return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
+
+def rwh_primes(n):
+    # http://stackoverflow.com/questions/2068372/fastest-way-to-list-all-primes-below-n-in-python/3035188#3035188
+    """ Returns  a list of primes < n """
+    sieve = [True] * n
+    for i in xrange(3,int(n**0.5)+1,2):
+        if sieve[i]:
+            sieve[i*i::2*i]=[False]*((n-i*i-1)/(2*i)+1)
+    return [2] + [i for i in xrange(3,n,2) if sieve[i]]
+
+def pimes_until(n):
+    sieve = [True] * n
+    for i in xrange(3, n, 2 ):
+        if sieve[i]:
+            for j in xrange(2*i, n, i):
+                sieve[j] = False
+
+def prime_series(start):
+    while True:
+        if is_prime(start):
+            yield start
+        start += 1
+
+def is_pandigital_1to9(number):
+    str_num = str(number)
+    if len(str_num) != 9:
+        return False
+
+    for i in range(1, 10):
+        if str_num.find(str(i)) < 0:
+            return False
+
+    return True
+
 
 if __name__ == "__main__":
     # print digit_sum(10)
     # print digit_sum(234)
-    print divisors(220)
-    print sum_divisors(220)
+    # print divisors(220)
+    # print sum_divisors(220)
+    # print is_prime(1)
+    print is_pandigital_1to9(123456789)
+    print is_pandigital_1to9(987654321)
+    print is_pandigital_1to9(987654221)
+    print is_pandigital_1to9(987655321)
