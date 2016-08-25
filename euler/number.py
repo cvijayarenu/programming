@@ -70,10 +70,9 @@ def prime_series(start):
 
 def is_pandigital_1to9(number):
     str_num = str(number)
-    if len(str_num) != 9:
-        return False
+    length = len(str_num)
 
-    for i in range(1, 10):
+    for i in range(1, length + 1):
         if str_num.find(str(i)) < 0:
             return False
 
